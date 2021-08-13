@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->float('discount_price')->nullable();
             $table->text('description');
+            $table->string('image');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
