@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="col-lg-12">
-            <form action="{{('admin.product.insert')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('productInsert')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="">Title:</label>
@@ -33,14 +33,12 @@
                         <p class="text-danger small">{{$message}}</p>
                     @enderror
                 </div>
-                
                 <div class="mb-3">
                     <label for="">category:</label>
                     <select name="category_id" id="" class="form-control">
                         @foreach ($categories as $cat )
                             <option value="{{$cat->id}}">{{$cat->title}}</option>
                         @endforeach
-
                     </select>
                     @error('category_id')
                         <p class="text-danger small">{{$message}}</p>
@@ -59,7 +57,6 @@
                     @error('image')
                         <p class="text-danger small">{{$message}}</p>
                     @enderror
-                
                 </div>
                 <div class="mb-2">
                     <input type="submit" class="btn btn-success w-100">

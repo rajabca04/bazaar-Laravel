@@ -28,7 +28,7 @@
                 @foreach ($categories as $item )
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->p_title}}</td>
+                        <td>{{$item->title}}</td>
                         
                         <td>
                             <div class="dropdown">
@@ -37,7 +37,12 @@
                                 <div class="dropdown-menu">
                                     <a href="" class="dropdown-item">Edit</a>
                                     <a href="" class="dropdown-item">View</a>
-                                    <a href="" class="dropdown-item">Delete</a>
+                                    <form action="{{route('admin.category.delete',['id'=>$item->id])}}" method="POST">
+                                        @method('delete') @csrf
+                                        <input type="hidden">
+
+                                        <button type="submit" class="dropdown-item"> <i class="bi bi-trash link-danger"></i>Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>

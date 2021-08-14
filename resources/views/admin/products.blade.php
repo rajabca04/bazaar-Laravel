@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Manage Products</h3>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <table class="table">
                 <tr>
@@ -21,8 +28,8 @@
                         <td>{{$item->brand}}</td>
                         <td>{{$item->price}}</td>
                         <td>{{$item->discount_price}}</td>
+                        <td>{{$item->category->title}}</td>
                         <td>{{$item->image}}</td>
-                        <td>{{$item->category_id}}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="dropdown">Action</button>
@@ -30,7 +37,12 @@
                                 <div class="dropdown-menu">
                                     <a href="" class="dropdown-item">Edit</a>
                                     <a href="" class="dropdown-item">View</a>
-                                    <a href="" class="dropdown-item">Delete</a>
+                                    <form action="{{route('admin.product.delete',['id'=>$item->id])}}" method="POST">
+                                        @method('delete') @csrf
+                                        <input type="hidden">
+
+                                        <button type="submit" class="dropdown-item"> <i class="bi bi-trash link-danger"></i>Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>

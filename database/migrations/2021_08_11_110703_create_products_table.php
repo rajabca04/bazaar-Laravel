@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('discount_price')->nullable();
             $table->text('description');
             $table->string('image');
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
